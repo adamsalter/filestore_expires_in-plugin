@@ -25,6 +25,14 @@ In controllers:
       #code here
     end
 
+In models:
+
+    cache_key = "my_model-%s-%s-%s" % [self.value, page, limit]
+    
+    result = Rails.cache.fetch(cache_key, :expire_in => 1.day) do
+      QueryYPEX.find_all_businesses_by({:zip => zipcode}, page, limit)
+    end
+
 
 Copyright (c) 2009 Adam @ [Codebright.net][cb], released under the MIT license
 
