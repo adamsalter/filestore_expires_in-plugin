@@ -5,7 +5,7 @@ Adds a :expires_in option to Rails filestore caching, in line with memcached sto
 
 Model observers and sweepers are still useable as well, of course.
 
-Filestore caching is a much easier method of caching to implement quickly than memcached, since it just involves writing the caches to files in the tmp/ directory.
+Filestore caching is a much easier method of caching to implement quickly than memcached, since it just involves writing the cache data to files in the tmp/ directory (also making it good for shared hosting environments).
 
 Example
 =======
@@ -27,7 +27,7 @@ In models:
     cache_key = "my_model-%s-%s-%s" % [self.value, page, limit]
     
     result = Rails.cache.fetch(cache_key, :expires_in => 1.day) do
-      QueryYPEX.find_all_businesses_by({:zip => zipcode}, page, limit)
+      # result data to be cached
     end
 
 
