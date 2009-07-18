@@ -8,12 +8,12 @@ Model observers and sweepers are still useable as well, of course.
 Filestore caching is a much easier method of caching to implement quickly than memcached, since it just involves writing the cache data to files in the tmp/ directory (also making it good for shared hosting environments).
 
 Installation
-=======
+------
 
     ./script/plugin install git://github.com/adamsalter/filestore_expires_in-plugin.git
 
 Useage
-=======
+------
 
 In views:
 
@@ -37,7 +37,7 @@ In models:
 
 
 Requirements
-=========
+------
 
 Enable :file_store caching
 
