@@ -10,7 +10,16 @@ Filestore caching is a much easier method of caching to implement quickly than m
 Installation
 ------
 
+1) Install plugin
+
     ./script/plugin install git://github.com/adamsalter/filestore_expires_in-plugin.git
+
+2) Enable :file_store caching
+
+config/environments/production.rb:
+
+    config.action_controller.perform_caching = true
+    config.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"
 
 Useage
 ------
@@ -35,15 +44,6 @@ In models:
       # result data to be cached
     end
 
-
-Requirements
-------
-
-Enable :file_store caching
-
-    #config/environments/production.rb
-    config.action_controller.perform_caching             = true
-    config.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"
 
 
 Copyright (c) 2009 Adam @ [Codebright.net][cb], released under the MIT license
