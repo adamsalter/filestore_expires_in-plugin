@@ -29,7 +29,7 @@ In controllers:
 
 In models:
 
-    cache_key = "my_model-%s-%s-%s" % [self.value, page, limit]
+    cache_key = "models/my_model/%s?%s-%s-%s" % ["model_method_name", self.value, page, limit]
     
     result = Rails.cache.fetch(cache_key, :expires_in => 1.day) do
       # result data to be cached
