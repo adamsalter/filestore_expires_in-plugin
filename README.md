@@ -24,16 +24,22 @@ config/environments/production.rb:
 Useage
 ------
 
+On controller classes:
+
+    class MyController < ApplicationController
+      caches_action :show, {:if => etc.}, {:expires_in => 1.day}
+    end
+
+In controller methods:
+
+    unless read_fragment({:controller => 'mycontroller', etc.}, {:expires_in => 1.day})
+      #code here
+    end
+
 In views:
 
     cache({:controller => 'mycontroller', etc.}, {:expires_in => 1.day}) do
       #fragment here
-    end
-
-In controllers:
-
-    unless read_fragment({:controller => 'mycontroller', etc.}, {:expires_in => 1.day})
-      #code here
     end
 
 In models:
@@ -43,7 +49,6 @@ In models:
     result = Rails.cache.fetch(cache_key, :expires_in => 1.day) do
       # result data to be cached
     end
-
 
 
 Copyright (c) 2009 Adam @ [Codebright.net][cb], released under the MIT license
